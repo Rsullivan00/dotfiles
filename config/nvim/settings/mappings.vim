@@ -12,6 +12,10 @@ nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
 
+" Remove search highlighting
+nnoremap <ESC><ESC> :nohlsearch<CR>
+nnoremap <C-c><C-c> :nohlsearch<CR>
+
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pc :PlugClean<cr>
 nnoremap <leader>so :source $MYVIMRC<cr>
