@@ -8,8 +8,12 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \  'javascript': ['prettier'],
 \  'typescript': ['prettier'],
-\  'python': ['yapf'],
-\  'elixir': ['mix_format']
+\  'python': ['black'],
+\  'elixir': ['mix_format'],
+\  'ruby': ['prettier'],
+\  'terraform': ['terraform'],
+\  'hcl': ['terraform'],
+\  '*': ['trim_whitespace']
 \}
 
 let g:ale_fix_on_save = 1
