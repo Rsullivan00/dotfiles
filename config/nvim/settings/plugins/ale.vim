@@ -1,3 +1,10 @@
+function! RbPrettier(buffer) abort
+    return {
+    \   'command': 'rbprettier %s'
+    \}
+endfunction
+execute ale#fix#registry#Add('rbprettier', 'RbPrettier', ['ruby'], 'prettier for ruby')
+
 let g:ale_linters = {
 \  'javascript': ['eslint'],
 \  'typescript': ['tsserver', 'typescript-eslint-parser'],
@@ -10,7 +17,7 @@ let g:ale_fixers = {
 \  'typescript': ['prettier'],
 \  'python': ['black'],
 \  'elixir': ['mix_format'],
-\  'ruby': ['prettier'],
+\  'ruby': ['rbprettier'],
 \  'terraform': ['terraform'],
 \  'hcl': ['terraform'],
 \  '*': ['trim_whitespace']
@@ -23,3 +30,4 @@ let g:ale_statusline_format = ['☠ %d', '⚠️ %d', '👍 ok']
 let g:ale_sign_error = "☠"
 let g:ale_sign_warning = "⚠️"
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
