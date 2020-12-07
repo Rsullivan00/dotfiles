@@ -31,3 +31,5 @@ let g:ale_sign_error = "☠"
 let g:ale_sign_warning = "⚠️"
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
+
+command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0) ? 0 : 1"
