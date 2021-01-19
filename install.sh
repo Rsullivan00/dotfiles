@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 currentdir=$(pwd)
 
@@ -12,25 +12,32 @@ if [ ! -f $HOME/.bash_aliases ]; then
   ln -s $currentdir/bash_aliases $HOME/.bash_aliases
 fi
 
-if [ ! -d $HOME/.ssh ] ||  [ ! -f $HOME/.ssh/id_rsa.pub ]; then
-  echo "Generating ssh key..."
-  ssh-keygen -t rsa -b 4096 -C "rick@ricksullivan.net"
+if [ ! -f $HOME/.asdfrc ]; then
+  echo "Linking asdfrc"
+  ln -s $currentdir/asdfrc $HOME/.asdfrc
+fi
 
-  if eval "$(ssh-agent -s)" > /dev/null; then
-    ssh-add $HOME/.ssh/id_rsa
-  fi
+if [ -x "$(command -v apt)" ]; then
+  sudo apt update
+  sudo apt install -y curl git build-essential zlib1g-dev libssl-dev libffi-dev
+fi
+
+if [ ! -x "$(command -v asdf)" ]; then
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+  cd ~/.asdf
+  git checkout "$(git describe --abbrev=0 --tags)"
 fi
 
 echo "Setting up neovim..."
-./scripts/symlink_nvim_dotfiles.sh
-
-echo "Setting up Vim Plug..."
-./scripts/setup_vim_plug.sh
+./scripts/neovim.sh
 
 echo "Installing NVM and Yarn..."
-./scripts/setup_yarn.sh
+./scripts/yarn.sh
 
-echo "Installing PyEnv..."
-./scripts/setup_python.sh
+echo "Installing Python..."
+./scripts/python.sh
 
-source $HOME/.bash_profile
+echo "Setting up git..."
+./scripts/git.sh
+
+. $HOME/.bash_profile

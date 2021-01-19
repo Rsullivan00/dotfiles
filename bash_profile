@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=1000000
@@ -7,10 +7,11 @@ export EDITOR='nvim'
 PROMPT_COMMAND="updateps1;history -a"
 PATH="$PATH:$HOME/.local/bin"
 
-if [ -x "$(command -v pyenv)" ]; then
-  export PYENV_ROOT=/usr/local/opt/pyenv
-  export PATH="$(pyenv root)/shims:$PATH"
-  eval "$(pyenv init -)"
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+	. "$HOME/.asdf/asdf.sh"
+fi
+if [ -f "/usr/local/opt/asdf/asdf.sh" ]; then
+	. "/usr/local/opt/asdf/asdf.sh"
 fi
 
 updateps1() {
@@ -45,4 +46,3 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[ -s "/usr/local/opt/asdf/asdf.sh" ] && \. "/usr/local/opt/asdf/asdf.sh"
