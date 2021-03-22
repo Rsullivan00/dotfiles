@@ -8,7 +8,7 @@ colorscheme hybrid_reverse
 
 set autoindent
 set autoread
-set clipboard=unnamed
+set clipboard=unnamedplus
 set colorcolumn=80
 set cursorline
 set expandtab
