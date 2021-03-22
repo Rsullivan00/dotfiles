@@ -4,7 +4,7 @@ asdf plugin add neovim
 asdf install neovim stable
 asdf global neovim stable
 
-mkdir -p /home/rsullivan/.config
+mkdir -p $HOME/.config
 ln -s $PWD/config/nvim $HOME/.config/nvim
 
 if [ ! -f $HOME/.config/nvim/autoload/plug.vim ]; then
