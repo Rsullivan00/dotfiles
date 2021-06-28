@@ -16,3 +16,5 @@ if [ ! -x "$(command -v yarn)" ]; then
   asdf install yarn latest
   asdf global yarn latest
 fi
+
+yarn global add neovim

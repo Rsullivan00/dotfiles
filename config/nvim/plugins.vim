@@ -10,7 +10,7 @@ Plug '1995eaton/vim-better-javascript-completion', { 'for': ['javascript', 'js',
 
 " Typescript
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript'] }
-Plug 'mhartington/nvim-typescript', { 'for': ['typescript'], 'do': './install.sh' }
+Plug 'mhartington/nvim-typescript', { 'for': ['typescript'], 'do': './install.sh \| UpdateRemotePlugins' }
 
 " GraphQL
 Plug 'jparise/vim-graphql'

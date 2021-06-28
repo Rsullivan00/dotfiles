@@ -37,14 +37,14 @@ if [ ! -x "$(command -v asdf)" ]; then
   git checkout "$(git describe --abbrev=0 --tags)"
 fi
 
-echo "Setting up neovim..."
-./scripts/neovim.sh
-
 echo "Installing NVM and Yarn..."
 ./scripts/yarn.sh
 
 echo "Installing Python..."
 ./scripts/python.sh
+
+echo "Setting up neovim..."
+./scripts/neovim.sh
 
 echo "Setting up git..."
 ./scripts/git.sh
