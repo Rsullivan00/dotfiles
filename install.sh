@@ -19,7 +19,16 @@ fi
 
 if [ -x "$(command -v apt)" ]; then
   sudo apt update
-  sudo apt install -y curl git build-essential zlib1g-dev libssl-dev libffi-dev
+  sudo apt install -y curl git build-essential zlib1g-dev libssl-dev libffi-dev silversearch-ag unzip
+fi
+
+if [ ! -x "$(command -v win32yank.exe)" ]; then
+  curl -L https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip --output win32yank-x64.zip
+  mkdir tmp
+  unzip -d tmp win32yank-x64.zip
+  chmod 0755 tmp/win32yank.exe
+  mv tmp/win32yank.exe /usr/local/bin/
+  rm -r tmp win32yank-x64.zip
 fi
 
 if [ ! -x "$(command -v asdf)" ]; then
